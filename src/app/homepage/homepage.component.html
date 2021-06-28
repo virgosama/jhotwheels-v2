@@ -1,1 +1,86 @@
-<p>homepage works!</p>
+<head>
+  <title>Julian's Hot Wheels Blog</title>
+</head>
+<body>
+<section class="header">
+  <figure class="header__slider">
+    <img src="../../assets/images/featured-post1.JPG">
+    <img src="../../assets/images/featured-post2.JPG">
+    <img src="../../assets/images/featured-post3.JPG">
+    <img src="../../assets/images/featured-post4.JPG">
+  </figure>
+  <div class="header__overlay"></div>
+  <!--<div class="header__slider-indicator">-->
+    <!--<div class="header__dot"></div>-->
+    <!--<div class="header__dot"></div>-->
+    <!--<div class="header__dot"></div>-->
+    <!--<div class="header__dot"></div>-->
+  <!--</div>-->
+  <div class="header__menu-bar container">
+    <ul>
+      <li [routerLink]="['most-popular']">Home</li>
+      <li [routerLink]="['most-popular']">All Posts</li>
+      <li [routerLink]="['most-popular']">Most Popular</li>
+      <li [routerLink]="['most-popular']">Contact Me</li>
+    </ul>
+  </div>
+  <div class="header__featured-post container">
+    <span>Corvette Grand Sport Roadster & '14 Corvette Stingray (2016 Then and Now)</span>
+  </div>
+</section>
+
+<section class="about-me">
+  <div class="about-me__content container">
+    <img src="../../assets/images/jhw-logo1.png">
+    <div class="about-me__content-text">
+      <h1>Julian's Hot Wheels Blog </h1>
+      <h3>My name is Julian and this is my blog for those who love
+        Hot Wheels!
+        Check back regularly for new posts! Thanks for visiting, keep collecting!</h3>
+    </div>
+  </div>
+</section>
+
+<section class="recent-post container">
+  <h1>Recent Posts</h1>
+  <div class="recent-post__content">
+    <div *ngFor="let post of posts | slice:0:5;" class="recent-post__content-item">
+      <h2>{{post.title}}</h2>
+      <span class="recent-post__content-date">{{post.publishedDate}}</span>
+      <p class="recent-post__content-text">{{post.description}}</p>
+      <div *ngFor="let imageUrl of post.imageList | slice:0:4;" class="recent-post__content-images">
+        <img src="{{imageUrl}}">
+      </div>
+    </div>
+  </div>
+  <button class="recent-post__button button">SEE MORE</button>
+</section>
+
+<section class="footer container">
+  <div class="footer__contact-me">
+    <h3>Contact Me</h3>
+    <span>Send me a message</span>
+    <form>
+      <input type="text" placeholder="Name">
+      <input type="text" placeholder="Email">
+      <input type="text" placeholder="Message">
+      <button type="submit" class="recent-post__button button">SEE MORE</button>
+    </form>
+  </div>
+  <div class="footer__social">
+    <div class="footer__social-subscribe">
+      <h3>Subscribe to my blog</h3>
+      <span>Get notifications on new post!</span>
+      <form>
+        <input type="text" placeholder="Email">
+        <button type="submit" class="recent-post__button button">SEE MORE</button>
+      </form>
+    </div>
+    <div class="footer__social-media">
+      <div class="footer__social-media-instagram"><span>@pacificaccipiter</span></div>
+      <div class="footer__social-media-youtube"><span>PacificAccipiterHW</span></div>
+    </div>
+  </div>
+  <div class="footer__logo"></div>
+</section>
+</body>
