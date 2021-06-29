@@ -9,10 +9,10 @@ export interface DetailedPost {
   imageList: string[];
 }
 
-export interface Images {
-  url: string;
+export interface FeaturedPost {
+  title: string;
+  imageList: string[];
 }
-
 
 @Component({
   selector: 'app-homepage',
@@ -23,15 +23,24 @@ export interface Images {
 export class HomepageComponent implements OnInit {
 
   posts: DetailedPost[] = [];
+  featuredPost: FeaturedPost = {
+    title: '',
+    imageList: []
+  };
+  featuredPostId = '8947716600215316940';
 
   constructor(private bloggerService: BloggerService) {
   }
 
   ngOnInit(): void {
+    // this.getFeaturedPost();
     this.getPosts();
   }
 
   getPosts(): void {
+    const regex = /(src=")((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=+$,\w]+@)?[A-Za-z0-9.\-]+|(?:www\.|[\-;:&=+$,\w]+@)[A-Za-z0-9.\-]+)((?:\/[+~%\/.\w\-_]*)?\??(?:[\-+=&;%@.\w_]*)#?(?:[.!\/\\\w]*))?)/g;
+    let imageArray = [];
+
     this.bloggerService.getPostList().subscribe(resp => {
       resp.items.forEach((item: any) => {
         let description = item.content.split('</p>');
@@ -42,22 +51,9 @@ export class HomepageComponent implements OnInit {
           description = description[0].replace('<p>', '');
         }
 
-        const imageArray: string[] = [];
-        const imageSplit = item.content.split('https://1.bp.blogspot.com/');
-        imageSplit.forEach((e: any) => {
-          if (e.includes('.HEIC') && e.includes('/s3024')) {
-            const heicString = 'https://1.bp.blogspot.com/' + e.substring(0, e.indexOf('.HEIC')) + '.HEIC';
-            console.log(heicString);
-            imageArray.push(heicString);
-          } else if (e.includes('.PNG') && e.includes('/s3024')) {
-            const pngString = 'https://1.bp.blogspot.com/' + e.substring(0, e.indexOf('.PNG')) + '.PNG';
-            console.log(pngString);
-            imageArray.push(pngString);
-          } else if (e.includes('.jpg') && e.includes('/s3024')) {
-            const jpgString = 'https://1.bp.blogspot.com/' + e.substring(0, e.indexOf('.jpg')) + '.jpg';
-            console.log(jpgString);
-            imageArray.push(jpgString);
-          }
+        imageArray = item.content.match(regex);
+        imageArray.forEach((element: any, index: number, array: any) => {
+          array[index] = element.replace('src="', '');
         });
 
         const detailedPost = {
@@ -69,7 +65,7 @@ export class HomepageComponent implements OnInit {
         };
         this.posts.push(detailedPost);
       });
-      console.log(this.posts);
     });
   }
+
 }

@@ -18,6 +18,11 @@ export class BloggerService {
       `${this.apiUrl}/posts?key=${this.apiKey}`);
   }
 
+  getDetailedPost(postId: string): Observable<any> {
+    return this.httpClient.get<any>(
+      `${this.apiUrl}/posts/${postId}?key=${this.apiKey}`);
+  }
+
   // GET https://www.googleapis.com/blogger/v3/blogs/2399953?key=YOUR-API-KEY
   // GET https://www.googleapis.com/blogger/v3/blogs/2399953/posts/7706273476706534553?key=YOUR-API-KEY specific post
   // GET https://www.googleapis.com/blogger/v3/blogs/3213900/posts/search?q=documentation&key=YOUR-API-KEY search

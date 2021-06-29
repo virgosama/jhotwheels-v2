@@ -11,10 +11,10 @@
   </figure>
   <div class="header__overlay"></div>
   <!--<div class="header__slider-indicator">-->
-    <!--<div class="header__dot"></div>-->
-    <!--<div class="header__dot"></div>-->
-    <!--<div class="header__dot"></div>-->
-    <!--<div class="header__dot"></div>-->
+  <!--<div class="header__dot"></div>-->
+  <!--<div class="header__dot"></div>-->
+  <!--<div class="header__dot"></div>-->
+  <!--<div class="header__dot"></div>-->
   <!--</div>-->
   <div class="header__menu-bar container">
     <ul>
@@ -44,43 +44,75 @@
 <section class="recent-post container">
   <h1>Recent Posts</h1>
   <div class="recent-post__content">
-    <div *ngFor="let post of posts | slice:0:5;" class="recent-post__content-item">
+    <div class="recent-post__content-item" *ngFor="let post of posts | slice:0:5">
       <h2>{{post.title}}</h2>
-      <span class="recent-post__content-date">{{post.publishedDate}}</span>
+      <span class="recent-post__content-date">{{post.publishedDate | date:'fullDate'}}</span>
       <p class="recent-post__content-text">{{post.description}}</p>
       <div *ngFor="let imageUrl of post.imageList | slice:0:4;" class="recent-post__content-images">
         <img src="{{imageUrl}}">
       </div>
     </div>
   </div>
-  <button class="recent-post__button button">SEE MORE</button>
+  <div class="recent-post__button">
+    <button class="button">SEE MORE</button>
+  </div>
 </section>
 
-<section class="footer container">
-  <div class="footer__contact-me">
-    <h3>Contact Me</h3>
-    <span>Send me a message</span>
-    <form>
-      <input type="text" placeholder="Name">
-      <input type="text" placeholder="Email">
-      <input type="text" placeholder="Message">
-      <button type="submit" class="recent-post__button button">SEE MORE</button>
-    </form>
-  </div>
-  <div class="footer__social">
-    <div class="footer__social-subscribe">
-      <h3>Subscribe to my blog</h3>
-      <span>Get notifications on new post!</span>
+<section class="footer">
+  <div class="footer__container container">
+    <div class="footer__contact-me">
+      <h3>Contact Me</h3>
+      <span class="sub-content">Send me a message</span>
       <form>
+        <input type="text" placeholder="Name">
         <input type="text" placeholder="Email">
-        <button type="submit" class="recent-post__button button">SEE MORE</button>
+        <textarea placeholder="Message"></textarea>
+        <div>
+          <button type="submit" class="button">SEND</button>
+        </div>
       </form>
     </div>
-    <div class="footer__social-media">
-      <div class="footer__social-media-instagram"><span>@pacificaccipiter</span></div>
-      <div class="footer__social-media-youtube"><span>PacificAccipiterHW</span></div>
+    <div class="footer__social">
+      <div class="footer__social-subscribe">
+        <h3>Subscribe to my blog</h3>
+        <span class="sub-content">Get notifications on new post!</span>
+        <form>
+          <input type="text" placeholder="Email">
+          <div>
+            <button type="submit" class="button">SUBSCRIBE</button>
+          </div>
+        </form>
+      </div>
+      <div class="footer__social-media">
+        <a href="http://www.instagram.com/pacificaccipiter" target="_blank">
+          <div class="footer__social-media-instagram">
+            <img src="../../assets/images/instagram.svg">
+            <div>
+              <span>@pacificaccipiter</span>
+              <span class="sub-content">Explore more photos on my Instagram</span>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/user/PacificAccipiterHW" target="_blank">
+          <div class="footer__social-media-youtube">
+            <img src="../../assets/images/youtube.svg">
+            <div>
+              <span>PacificAccipiterHW</span>
+              <span class="sub-content">Explore my YouTube channel, Julian's HW</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="footer__logo">
+      <img src="../../assets/images/jhw-logo-white1.png">
     </div>
   </div>
-  <div class="footer__logo"></div>
+</section>
+
+<section class="copyright">
+  <div class="copyright__container container">
+    <span class="sub-content">Copyright 2021 | All Rights Reserved | By @mariasteva</span>
+  </div>
 </section>
 </body>
