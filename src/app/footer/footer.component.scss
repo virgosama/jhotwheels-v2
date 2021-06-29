@@ -1,0 +1,98 @@
+@import '../../assets/scss/_variables.scss';
+
+.footer {
+  background: $colorDarkBlue;
+  color: $colorWhite;
+  padding: 32px 0;
+  //margin: 0 auto;
+
+  button {
+    padding: 8px 24px;
+  }
+
+  input {
+    border: 0;
+    display: block;
+    padding: 8px;
+    margin-bottom: 8px;
+    min-width: 60%;
+    height: 32px;
+  }
+
+  &__container {
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: 40% 40% 20%;
+  }
+
+  &__contact-me {
+
+    form {
+
+      textarea {
+        font-family: $fontFamily;
+        min-width: 75%;
+        min-height: 80px;
+        padding: 8px;
+        margin-bottom: 2px;
+      }
+    }
+
+  }
+
+  &__social {
+
+    a{
+      color: unset;
+      text-decoration: none;
+    }
+
+    &-media {
+      padding-top: 12px;
+
+      &-instagram, &-youtube {
+        display: flex;
+        margin: 12px 0;
+
+        div {
+          padding-left: 16px;
+        }
+
+        span {
+          display: block;
+          padding: 2px;
+        }
+
+        img {
+          width: 10%;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 125px;
+      height: auto;
+    }
+  }
+}
+
+.copyright {
+  color: $colorWhite;
+  background-color: $colorBlack;
+  height: 24px;
+
+  &__container {
+    text-align: center;
+    margin: 0 auto;
+
+    span {
+      margin: 0 auto;
+    }
+  }
+}

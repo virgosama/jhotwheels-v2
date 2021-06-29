@@ -1,18 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {BloggerService} from '../blogger.service';
-
-export interface DetailedPost {
-  id: string;
-  title: string;
-  publishedDate: string;
-  description: string;
-  imageList: string[];
-}
-
-export interface FeaturedPost {
-  title: string;
-  imageList: string[];
-}
+import {BloggerService, DetailedPost, FeaturedPost} from '../blogger.service';
 
 @Component({
   selector: 'app-homepage',
@@ -66,6 +53,14 @@ export class HomepageComponent implements OnInit {
         this.posts.push(detailedPost);
       });
     });
+  }
+
+  onClickContactMe():void {
+    const elmnt = document.getElementById("footer");
+    console.log(elmnt);
+    if (elmnt) {
+      elmnt.scrollIntoView();
+    }
   }
 
 }

@@ -1,0 +1,21 @@
+<div class="header__menu-bar container">
+  <ul>
+    <li [routerLink]="['']">Home</li>
+    <li [routerLink]="['all-posts']">All Posts</li>
+    <li [routerLink]="['most-popular']">Most Popular</li>
+    <li (click)="onClickContactMe()">Contact Me</li>
+  </ul>
+</div>
+
+<section class="detailed-post container">
+  <h1>{{detailedPost.title}}</h1>
+  <div class="detailed-post__content">
+    <span class="detailed-post__content-date">{{detailedPost.publishedDate | date:'fullDate'}}</span>
+    <p class="detailed-post__content-text">{{detailedPost.description}}</p>
+    <div *ngFor="let imageUrl of detailedPost.imageList;" class="detailed-post__content-images">
+      <img src="{{imageUrl}}">
+    </div>
+  </div>
+</section>
+
+<app-footer id="footer"></app-footer>

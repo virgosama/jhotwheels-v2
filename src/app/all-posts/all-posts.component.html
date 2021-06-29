@@ -1,1 +1,43 @@
-<p>all-posts works!</p>
+<div class="header__menu-bar container">
+  <ul>
+    <li [routerLink]="['']">Home</li>
+    <li [routerLink]="['all-posts']" routerLinkActive="active-menu">All Posts</li>
+    <li [routerLink]="['most-popular']">Most Popular</li>
+    <li (click)="onClickContactMe()">Contact Me</li>
+  </ul>
+</div>
+<section class="recent-post container">
+  <h1>All Posts</h1>
+  <div class="recent-post__content">
+    <div class="recent-post__content-item" *ngFor="let post of posts">
+      <h2 (click)="onClickDetails(post.id)">{{post.title}}</h2>
+      <span class="recent-post__content-date">{{post.publishedDate | date:'fullDate'}}</span>
+      <p class="recent-post__content-text">{{post.description}}</p>
+      <div *ngFor="let imageUrl of post.imageList | slice:0:4;" class="recent-post__content-images">
+        <img src="{{imageUrl}}">
+      </div>
+    </div>
+  </div>
+  <div class="recent-post__button">
+    <button (click)="onClickLoadMore()" class="button">LOAD MORE</button>
+  </div>
+  <!--<div class="recent-post__pagination">-->
+    <!--<div *ngIf="newerPostsToken"-->
+      <!--(click)="onClickNewerPosts()"-->
+      <!--class="recent-post__pagination-previous">-->
+      <!--<img src="../../assets/images/previous-icon.svg">-->
+      <!--<span>Newer Posts</span>-->
+    <!--</div>-->
+    <!--<span *ngIf="olderPostsToken && newerPostsToken" class="separator">|</span>-->
+    <!--<div *ngIf="olderPostsToken" (click)="onClickOlderPosts()"-->
+      <!--class="recent-post__pagination-next">-->
+      <!--<span>Older Posts</span>-->
+      <!--<img src="../../assets/images/next-icon.svg">-->
+    <!--</div>-->
+  <!--</div>-->
+</section>
+
+<section class="pagination">
+
+</section>
+<app-footer id="footer"></app-footer>

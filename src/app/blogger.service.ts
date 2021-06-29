@@ -2,6 +2,19 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
+export interface DetailedPost {
+  id: string;
+  title: string;
+  publishedDate: string;
+  description: string;
+  imageList: string[];
+}
+
+export interface FeaturedPost {
+  title: string;
+  imageList: string[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +31,13 @@ export class BloggerService {
       `${this.apiUrl}/posts?key=${this.apiKey}`);
   }
 
+  getPostListNew(pageToken: string): Observable<any> {
+    return this.httpClient.get<any>(
+      `${this.apiUrl}/posts/?${pageToken}key=${this.apiKey}`);
+  }
+
   getDetailedPost(postId: string): Observable<any> {
+    console.log(`${this.apiUrl}/posts/${postId}?key=${this.apiKey}`);
     return this.httpClient.get<any>(
       `${this.apiUrl}/posts/${postId}?key=${this.apiKey}`);
   }

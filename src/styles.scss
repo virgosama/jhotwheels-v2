@@ -3,6 +3,7 @@
 html {
   font-size: 100%;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *, *::before, *::after {
@@ -57,4 +58,5 @@ span.sub-content {
   font-family: $fontFamily;
   border-radius: 0;
   color: $colorWhite;
+  cursor: pointer;
 }
