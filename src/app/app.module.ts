@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import {HttpClientModule} from '@angular/common/http';
-import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { MostPopularComponent } from './most-popular/most-popular.component';
 import { AllPostsComponent } from './all-posts/all-posts.component';
 import { FooterComponent } from './footer/footer.component';
@@ -28,7 +27,6 @@ import {DatePipe} from "@angular/common";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    IvyCarouselModule,
     RouterModule,
     DatePipe
   ],
