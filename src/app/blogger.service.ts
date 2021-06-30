@@ -26,18 +26,12 @@ export class BloggerService {
   apiUrl = 'https://www.googleapis.com/blogger/v3/blogs/6780687593781336674';
   apiKey = 'AIzaSyD3gnYnXpYqm0nCMFbtTPlswNSKQwTvI9I';
 
-  getPostList(): Observable<any> {
-    return this.httpClient.get<any>(
-      `${this.apiUrl}/posts?key=${this.apiKey}`);
-  }
-
-  getPostListNew(pageToken: string): Observable<any> {
+  getPostList(pageToken: string): Observable<any> {
     return this.httpClient.get<any>(
       `${this.apiUrl}/posts/?${pageToken}key=${this.apiKey}`);
   }
 
   getDetailedPost(postId: string): Observable<any> {
-    console.log(`${this.apiUrl}/posts/${postId}?key=${this.apiKey}`);
     return this.httpClient.get<any>(
       `${this.apiUrl}/posts/${postId}?key=${this.apiKey}`);
   }

@@ -44,11 +44,6 @@
       cursor: pointer;
     }
 
-    a {
-      color: $colorWhite;
-      text-decoration: none;
-    }
-
     .active-menu {
       background-color: $colorOrangeTransparent;
     }
@@ -155,10 +150,13 @@
       display: contents;
 
       img {
-        width: 242px;
-        margin-right: 8px;
+        width: 244px;
         height: auto;
       }
+    }
+
+    &-images:not(:last-child) img{
+      margin-right: 8px;
     }
 
     &-text {
@@ -172,6 +170,7 @@
 
     &-item {
       margin-bottom: 32px;
+
     }
   }
 
@@ -185,7 +184,6 @@
       padding: 16px;
     }
   }
-
 }
 
 @keyframes slider {

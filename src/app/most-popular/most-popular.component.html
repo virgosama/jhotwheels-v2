@@ -1,1 +1,20 @@
-<p>most-popular works!</p>
+<div class="header__menu-bar container">
+  <ul>
+    <li [routerLink]="['']">Home</li>
+    <li [routerLink]="['../all-posts']">All Posts</li>
+    <li class="active-menu" [routerLink]="['../most-popular']">Most Popular</li>
+    <li (click)="onClickContactMe()">Contact Me</li>
+  </ul>
+</div>
+
+<section class="under-construction">
+  <div class="under-construction__content">
+    <div class="under-construction__content-box">
+      <span>UNDER CONSTRUCTION</span>
+      <p>I will keep adding more features and improvements to enhance this website.<br />Original website can be found
+        <a style="text-decoration: underline" href="http://www.jhotwheels.com">HERE</a></p>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

@@ -18,14 +18,16 @@
   <!--</div>-->
   <div class="header__menu-bar container">
     <ul>
-      <li [routerLink]="['']" routerLinkActive="active-menu">Home</li>
+      <li class="active-menu" [routerLink]="['']">Home</li>
       <li [routerLink]="['all-posts']">All Posts</li>
       <li [routerLink]="['most-popular']">Most Popular</li>
       <li (click)="onClickContactMe()">Contact Me</li>
     </ul>
   </div>
   <div class="header__featured-post container">
-    <span>Corvette Grand Sport Roadster & '14 Corvette Stingray (2016 Then and Now)</span>
+    <a href="details/8947716600215316940">
+      <span style="color: #F8F8F8">Corvette Grand Sport Roadster & '14 Corvette Stingray (2016 Then and Now)</span>
+    </a>
   </div>
 </section>
 
@@ -45,7 +47,9 @@
   <h1>Recent Posts</h1>
   <div class="recent-post__content">
     <div class="recent-post__content-item" *ngFor="let post of posts | slice:0:5">
-      <h2>{{post.title}}</h2>
+      <div style="width: 100%">
+      <a href="details/{{post.id}}"><h2>{{post.title}}</h2></a>
+      </div>
       <span class="recent-post__content-date">{{post.publishedDate | date:'fullDate'}}</span>
       <p class="recent-post__content-text">{{post.description}}</p>
       <div *ngFor="let imageUrl of post.imageList | slice:0:4;" class="recent-post__content-images">

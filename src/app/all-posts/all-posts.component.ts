@@ -23,16 +23,22 @@ export class AllPostsComponent implements OnInit {
   getPosts(pageToken: string = ''): void {
     const regex = /(src=")((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=+$,\w]+@)?[A-Za-z0-9.\-]+|(?:www\.|[\-;:&=+$,\w]+@)[A-Za-z0-9.\-]+)((?:\/[+~%\/.\w\-_]*)?\??(?:[\-+=&;%@.\w_]*)#?(?:[.!\/\\\w]*))?)/g;
     let imageArray = [];
-    this.bloggerService.getPostListNew(pageToken).subscribe(resp => {
-      console.log(resp);
+    this.bloggerService.getPostList(pageToken).subscribe(resp => {
       resp.items.forEach((item: any) => {
-        let description = item.content.split('</p>');
-        if (description.length === 1) {
-          description = item.content.split('<div>');
-          description = description[0];
-        } else {
-          description = description[0].replace('<p>', '');
+        let description = '';
+        let descriptionArray: string[] = [];
+        if (item.content.split('</p>').length > 1) {
+          descriptionArray = item.content.split('</p>');
+          description = descriptionArray[0].replace('<p>', '');
+        } else if (item.content.split('<div>').length > 1) {
+          descriptionArray = item.content.split('<div>');
+          description = descriptionArray[0].replace('<div>', '');
+        } else if (item.content.split('<br />').length > 1) {
+          descriptionArray = item.content.split('<br />');
+          description = descriptionArray[0].replace('<br />', '');
         }
+
+        description = description.replace('&nbsp;', '');
 
         imageArray = item.content.match(regex);
         imageArray.forEach((element: any, index: number, array: any) => {
@@ -56,10 +62,11 @@ export class AllPostsComponent implements OnInit {
     });
   }
 
-  onClickDetails(postId: string): void {
-    localStorage.setItem('postId', postId);
-    this.router.navigate([]).then(e => {  window.open('/details', '_blank'); });
-  }
+  // onClickDetails(postId: string): void {
+  //   // localStorage.setItem('postId', postId);
+  //   // this.router.navigate([]).then(e => {  window.open('/details', '_blank'); });
+  //   this.router.navigate(['/details'], {state: {postId}});
+  // }
 
   onClickLoadMore(): void {
     this.getPosts('pageToken=' + this.nextPageToken + '&');

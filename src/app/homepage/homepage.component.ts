@@ -10,17 +10,11 @@ import {BloggerService, DetailedPost, FeaturedPost} from '../blogger.service';
 export class HomepageComponent implements OnInit {
 
   posts: DetailedPost[] = [];
-  featuredPost: FeaturedPost = {
-    title: '',
-    imageList: []
-  };
-  featuredPostId = '8947716600215316940';
 
   constructor(private bloggerService: BloggerService) {
   }
 
   ngOnInit(): void {
-    // this.getFeaturedPost();
     this.getPosts();
   }
 
@@ -28,7 +22,7 @@ export class HomepageComponent implements OnInit {
     const regex = /(src=")((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=+$,\w]+@)?[A-Za-z0-9.\-]+|(?:www\.|[\-;:&=+$,\w]+@)[A-Za-z0-9.\-]+)((?:\/[+~%\/.\w\-_]*)?\??(?:[\-+=&;%@.\w_]*)#?(?:[.!\/\\\w]*))?)/g;
     let imageArray = [];
 
-    this.bloggerService.getPostList().subscribe(resp => {
+    this.bloggerService.getPostList('').subscribe(resp => {
       resp.items.forEach((item: any) => {
         let description = item.content.split('</p>');
         if (description.length === 1) {
@@ -57,7 +51,6 @@ export class HomepageComponent implements OnInit {
 
   onClickContactMe():void {
     const elmnt = document.getElementById("footer");
-    console.log(elmnt);
     if (elmnt) {
       elmnt.scrollIntoView();
     }

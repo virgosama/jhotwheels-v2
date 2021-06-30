@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BloggerService, DetailedPost} from "../blogger.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-details',
@@ -20,37 +20,34 @@ export class DetailsComponent implements OnInit {
   };
 
   constructor(private bloggerService: BloggerService,
-              private router: Router) {
-    this.navigation = this.router.getCurrentNavigation();
-  }
+              private router: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getDetailedPost(this.getPostId());
   }
 
   getPostId(): string {
-    if (localStorage.getItem('postId')) {
-      console.log(JSON.parse(localStorage.getItem('postId') || '{}'));
-      return JSON.parse(localStorage.getItem('postId') || '{}');
-      // return '6783225320059334877';
-    } else {
-      this.router.navigate(['/all-posts']);
-      return '';
-    }
+    return this.router.snapshot.params['id'];
   }
 
   getDetailedPost(postId: string): void {
     const regex = /(href=")((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=+$,\w]+@)?[A-Za-z0-9.\-]+|(?:www\.|[\-;:&=+$,\w]+@)[A-Za-z0-9.\-]+)((?:\/[+~%\/.\w\-_]*)?\??(?:[\-+=&;%@.\w_]*)#?(?:[.!\/\\\w]*))?)/g;
     let imageArray = [];
     this.bloggerService.getDetailedPost(postId).subscribe(resp => {
-      console.log(resp);
-      let description = resp.content.split('</p>');
-      if (description.length === 1) {
-        description = resp.content.split('<div>');
-        description = description[0];
-      } else {
-        description = description[0].replace('<p>', '');
+      let description = '';
+      let descriptionArray: string[] = [];
+      if (resp.content.split('</p>').length > 1) {
+        descriptionArray = resp.content.split('</p>');
+        description = descriptionArray[0].replace('<p>', '');
+      } else if (resp.content.split('<div>').length > 1) {
+        descriptionArray = resp.content.split('<div>');
+        description = descriptionArray[0].replace('<div>', '');
+      } else if (resp.content.split('<br />').length > 1) {
+        descriptionArray = resp.content.split('<br />');
+        description = descriptionArray[0].replace('<br />', '');
       }
+
+      description = description.replace('&nbsp;', '');
 
       imageArray = resp.content.match(regex);
       imageArray.forEach((element: any, index: number, array: any) => {
@@ -64,8 +61,6 @@ export class DetailsComponent implements OnInit {
         description,
         imageList: imageArray
       };
-
-      console.log(this.detailedPost);
     });
   }
 

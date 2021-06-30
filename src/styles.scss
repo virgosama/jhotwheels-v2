@@ -29,6 +29,7 @@ h2 {
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;
+  display: inline-block;
 }
 
 h3 {
@@ -47,8 +48,6 @@ span.sub-content {
 
 .container {
   max-width: 1000px;
-  //margin: 0 calc((100vw - 1000px)/2);
-  //width: 100%;
 }
 
 .button {
@@ -60,3 +59,20 @@ span.sub-content {
   color: $colorWhite;
   cursor: pointer;
 }
+
+a:link, a:visited {
+  color: $colorBlack;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $colorOrange;
+  cursor: pointer;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -ms-transition: .2s;
+  -o-transition: .2s;
+  transition: .2s;
+}
+
+

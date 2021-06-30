@@ -12,4 +12,11 @@ export class MostPopularComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onClickContactMe():void {
+    const elmnt = document.getElementById("footer");
+    if (elmnt) {
+      elmnt.scrollIntoView();
+    }
+  }
+
 }
