@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,8 @@ import { AllPostsComponent } from './all-posts/all-posts.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { DetailsComponent } from './details/details.component';
+import {RouterModule} from "@angular/router";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -26,9 +28,12 @@ import { DetailsComponent } from './details/details.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    IvyCarouselModule
+    IvyCarouselModule,
+    RouterModule,
+    DatePipe
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
