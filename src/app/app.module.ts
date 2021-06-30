@@ -21,14 +21,14 @@ import {DatePipe} from "@angular/common";
     AllPostsComponent,
     FooterComponent,
     HeaderMenuComponent,
-    DetailsComponent
+    DetailsComponent,
+    DatePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    DatePipe
   ],
   providers: [],
   bootstrap: [AppComponent],
