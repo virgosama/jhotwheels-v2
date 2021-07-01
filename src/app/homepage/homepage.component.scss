@@ -171,6 +171,24 @@
     &-item {
       margin-bottom: 32px;
 
+      h2 {
+        cursor: pointer;
+        -webkit-transition: .2s;
+        -moz-transition: .2s;
+        -ms-transition: .2s;
+        -o-transition: .2s;
+        transition: .2s;
+      }
+
+      h2:hover {
+        -webkit-transition: .2s;
+        -moz-transition: .2s;
+        -ms-transition: .2s;
+        -o-transition: .2s;
+        transition: .2s;
+        color: $colorOrange;
+      }
+
     }
   }
 
