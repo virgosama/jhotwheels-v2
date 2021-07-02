@@ -3,6 +3,7 @@
 </head>
 <body>
 <section class="header">
+
   <figure class="header__slider">
     <img src="../../assets/images/featured-post1.JPG">
     <img src="../../assets/images/featured-post2.JPG">
@@ -16,14 +17,7 @@
   <!--<div class="header__dot"></div>-->
   <!--<div class="header__dot"></div>-->
   <!--</div>-->
-  <div class="header__menu-bar container">
-    <ul>
-      <li class="active-menu" [routerLink]="['']">Home</li>
-      <li [routerLink]="['all-posts']">All Posts</li>
-      <li [routerLink]="['most-popular']">Most Popular</li>
-      <li (click)="onClickContactMe()">Contact Me</li>
-    </ul>
-  </div>
+  <app-header-menu [transparentMenu]="isHomepage"></app-header-menu>
   <div class="header__featured-post container">
       <span routerLink="../details/8947716600215316940"
             style="color: #F8F8F8">Corvette Grand Sport Roadster & '14 Corvette Stingray (2016 Then and Now)</span>

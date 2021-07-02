@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 export class DetailsComponent implements OnInit {
 
-  navigation: any;
+  isHomepage = false;
   detailedPost: DetailedPost = {
     id: '',
     title: '',
@@ -63,12 +63,4 @@ export class DetailsComponent implements OnInit {
       };
     });
   }
-
-  onClickContactMe(): void {
-    const elmnt = document.getElementById("footer");
-    if (elmnt) {
-      elmnt.scrollIntoView();
-    }
-  }
-
 }

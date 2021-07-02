@@ -9,6 +9,7 @@ import {BloggerService, DetailedPost, FeaturedPost} from '../blogger.service';
 
 export class HomepageComponent implements OnInit {
 
+  isHomepage = true;
   posts: DetailedPost[] = [];
 
   constructor(private bloggerService: BloggerService) {
@@ -48,12 +49,4 @@ export class HomepageComponent implements OnInit {
       });
     });
   }
-
-  onClickContactMe():void {
-    const elmnt = document.getElementById("footer");
-    if (elmnt) {
-      elmnt.scrollIntoView();
-    }
-  }
-
 }

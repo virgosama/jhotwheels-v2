@@ -1,11 +1,4 @@
-<div class="header__menu-bar container">
-  <ul>
-    <li [routerLink]="['']">Home</li>
-    <li class="active-menu" [routerLink]="['all-posts']">All Posts</li>
-    <li [routerLink]="['../most-popular']">Most Popular</li>
-    <li (click)="onClickContactMe()">Contact Me</li>
-  </ul>
-</div>
+<app-header-menu [transparentMenu]="isHomepage"></app-header-menu>
 <section class="recent-post container">
   <h1>All Posts</h1>
   <div class="recent-post__content">

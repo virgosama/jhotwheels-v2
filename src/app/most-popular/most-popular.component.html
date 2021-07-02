@@ -1,11 +1,4 @@
-<div class="header__menu-bar container">
-  <ul>
-    <li [routerLink]="['']">Home</li>
-    <li [routerLink]="['../all-posts']">All Posts</li>
-    <li class="active-menu" [routerLink]="['../most-popular']">Most Popular</li>
-    <li (click)="onClickContactMe()">Contact Me</li>
-  </ul>
-</div>
+<app-header-menu [transparentMenu]="isHomepage"></app-header-menu>
 
 <section class="under-construction">
   <div class="under-construction__content">

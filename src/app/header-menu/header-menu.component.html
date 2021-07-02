@@ -1,8 +1,8 @@
 <div class="header__menu-bar container">
   <ul>
-    <li [routerLink]="['']">Home</li>
-    <li [routerLink]="['all-posts']">All Posts</li>
-    <li [routerLink]="['most-popular']">Most Popular</li>
-    <li [routerLink]="['most-popular']">Contact Me</li>
+    <li [routerLink]="['']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</li>
+    <li [routerLink]="['../all-posts']" routerLinkActive="active-link">All Posts</li>
+    <li [routerLink]="['../most-popular']" routerLinkActive="active-link" >Most Popular</li>
+    <li (click)="onClickContactMe()">Contact Me</li>
   </ul>
 </div>

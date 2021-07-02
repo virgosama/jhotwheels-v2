@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {BloggerService, DetailedPost} from "../blogger.service";
-import {Router} from "@angular/router";
+import {BloggerService, DetailedPost} from '../blogger.service';
 
 @Component({
   selector: 'app-all-posts',
@@ -9,11 +8,11 @@ import {Router} from "@angular/router";
 })
 export class AllPostsComponent implements OnInit {
 
+  isHomepage = false;
   posts: DetailedPost[] = [];
-  nextPageToken: string = '';
+  nextPageToken = '';
 
-  constructor(private bloggerService: BloggerService,
-              private router: Router) {
+  constructor(private bloggerService: BloggerService) {
   }
 
   ngOnInit(): void {
@@ -71,12 +70,4 @@ export class AllPostsComponent implements OnInit {
   onClickLoadMore(): void {
     this.getPosts('pageToken=' + this.nextPageToken + '&');
   }
-
-  onClickContactMe():void {
-    const elmnt = document.getElementById("footer");
-    if (elmnt) {
-      elmnt.scrollIntoView();
-    }
-  }
-
 }

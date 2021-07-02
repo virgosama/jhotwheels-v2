@@ -7,16 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MostPopularComponent implements OnInit {
 
+  isHomepage = false;
+
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onClickContactMe():void {
-    const elmnt = document.getElementById("footer");
-    if (elmnt) {
-      elmnt.scrollIntoView();
-    }
   }
 
 }
