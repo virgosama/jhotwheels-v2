@@ -1,8 +1,9 @@
-<div class="header__menu-bar container">
+<div class="header__menu-bar container" [style.background]="transparentMenu?'rgba(29, 60, 69, .75)':'rgba(29, 60, 69)'"
+     [style.position]="transparentMenu?'absolute':'relative'">
   <ul>
     <li [routerLink]="['']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</li>
-    <li [routerLink]="['../all-posts']" routerLinkActive="active-link">All Posts</li>
-    <li [routerLink]="['../most-popular']" routerLinkActive="active-link" >Most Popular</li>
+    <li [routerLink]="['/all-posts']" routerLinkActive="active-link">All Posts</li>
+    <li [routerLink]="['/most-popular']" routerLinkActive="active-link" >Most Popular</li>
     <li (click)="onClickContactMe()">Contact Me</li>
   </ul>
 </div>

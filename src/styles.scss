@@ -63,3 +63,15 @@ a:link, a:visited {
   text-decoration: none;
 }
 
+.dialog-backdrop {
+  background-color: $colorBlackTransparent;
+  width: 100%;
+  height: 100%;
+}
+
+.photo-viewer-dialog .mat-dialog-container{
+  background-color: transparent;
+  box-shadow: unset;
+  padding: 0;
+  overflow: hidden;
+}

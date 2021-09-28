@@ -10,8 +10,9 @@ import { AllPostsComponent } from './all-posts/all-posts.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { DetailsComponent } from './details/details.component';
-import {RouterModule} from "@angular/router";
-import {DatePipe} from "@angular/common";
+import {MaterialModule} from './material.module';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {PhotoViewerDialogComponent} from "./photo-viewer-dialog/photo-viewer-dialog.component";
 
 @NgModule({
   declarations: [
@@ -21,12 +22,15 @@ import {DatePipe} from "@angular/common";
     AllPostsComponent,
     FooterComponent,
     HeaderMenuComponent,
-    DetailsComponent
+    DetailsComponent,
+    PhotoViewerDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

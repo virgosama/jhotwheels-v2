@@ -1,0 +1,43 @@
+@import '../../assets/scss/_variables.scss';
+
+.photo-viewer {
+  height: 100%;
+  //overflow: hidden;
+
+  .abc {
+    width: 100%;
+    position: relative;
+  }
+
+  &__container {
+    //overflow: hidden;
+
+    img {
+      width: auto;
+      display: flex;
+      margin: 0 auto;
+      height: calc(100vh - 100px);
+    }
+  }
+
+  &__preview {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    position: absolute;
+
+    img {
+      height: auto;
+      max-height: 80%;
+      margin: 0 2px;
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+      cursor: pointer;
+
+      &.selected-preview {
+        border: solid 4px $colorOrange;
+      }
+    }
+  }
+}

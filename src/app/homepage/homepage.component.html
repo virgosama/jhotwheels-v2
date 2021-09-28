@@ -46,7 +46,7 @@
       <span class="recent-post__content-date">{{post.publishedDate | date:'fullDate'}}</span>
       <p class="recent-post__content-text">{{post.description}}</p>
       <div *ngFor="let imageUrl of post.imageList | slice:0:4;" class="recent-post__content-images">
-        <img src="{{imageUrl}}">
+        <img (click)="onClickThumbnail(imageUrl, post.imageList)" src="{{imageUrl}}">
       </div>
     </div>
   </div>

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BloggerService, DetailedPost, FeaturedPost} from '../blogger.service';
+import {MatDialog} from "@angular/material/dialog";
+import {PhotoViewerDialogComponent} from "../photo-viewer-dialog/photo-viewer-dialog.component";
 
 @Component({
   selector: 'app-homepage',
@@ -12,7 +14,8 @@ export class HomepageComponent implements OnInit {
   isHomepage = true;
   posts: DetailedPost[] = [];
 
-  constructor(private bloggerService: BloggerService) {
+  constructor(private bloggerService: BloggerService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -20,7 +23,7 @@ export class HomepageComponent implements OnInit {
   }
 
   getPosts(): void {
-    const regex = /(src=")((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=+$,\w]+@)?[A-Za-z0-9.\-]+|(?:www\.|[\-;:&=+$,\w]+@)[A-Za-z0-9.\-]+)((?:\/[+~%\/.\w\-_]*)?\??(?:[\-+=&;%@.\w_]*)#?(?:[.!\/\\\w]*))?)/g;
+    const regex = /(href=")((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=+$,\w]+@)?[A-Za-z0-9.\-]+|(?:www\.|[\-;:&=+$,\w]+@)[A-Za-z0-9.\-]+)((?:\/[+~%\/.\w\-_]*)?\??(?:[\-+=&;%@.\w_]*)#?(?:[.!\/\\\w]*))?)/g;
     let imageArray = [];
 
     this.bloggerService.getPostList('').subscribe(resp => {
@@ -35,7 +38,7 @@ export class HomepageComponent implements OnInit {
 
         imageArray = item.content.match(regex);
         imageArray.forEach((element: any, index: number, array: any) => {
-          array[index] = element.replace('src="', '');
+          array[index] = element.replace('href="', '');
         });
 
         const detailedPost = {
@@ -48,5 +51,20 @@ export class HomepageComponent implements OnInit {
         this.posts.push(detailedPost);
       });
     });
+  }
+
+  onClickThumbnail(imageUrl: string, imageArray: string[]): void {
+    console.log(imageArray);
+    const dialogConfig = {
+      width: '100%',
+      height: '100%',
+      data: {
+        imageUrl,
+        imageArray
+      },
+      backdropClass: 'dialog-backdrop',
+      panelClass: 'photo-viewer-dialog',
+    };
+    this.dialog.open(PhotoViewerDialogComponent, dialogConfig);
   }
 }

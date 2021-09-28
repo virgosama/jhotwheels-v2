@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BloggerService, DetailedPost} from '../blogger.service';
+import {PhotoViewerDialogComponent} from "../photo-viewer-dialog/photo-viewer-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-all-posts',
@@ -12,7 +14,8 @@ export class AllPostsComponent implements OnInit {
   posts: DetailedPost[] = [];
   nextPageToken = '';
 
-  constructor(private bloggerService: BloggerService) {
+  constructor(private bloggerService: BloggerService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -69,5 +72,21 @@ export class AllPostsComponent implements OnInit {
 
   onClickLoadMore(): void {
     this.getPosts('pageToken=' + this.nextPageToken + '&');
+  }
+
+  onClickThumbnail(imageUrl: string, imageArray: string[]): void {
+    console.log(imageArray);
+    const dialogConfig = {
+      width: '100%',
+      height: '100%',
+      data:
+        {
+          imageUrl,
+          imageArray
+        },
+      backdropClass: 'dialog-backdrop',
+      panelClass: 'photo-viewer-dialog',
+    };
+    this.dialog.open(PhotoViewerDialogComponent, dialogConfig);
   }
 }

@@ -1,0 +1,13 @@
+<section class="photo-viewer">
+  <div class="photo-viewer__container">
+    <img src="{{imageUrl}}">
+  </div>
+  <div class="abc" [style.left.px]="test">
+    <div class="photo-viewer__preview">
+      <ng-container *ngFor="let image of data.imageArray">
+        <img (click)="onClickPreview(image)" src="{{image}}"
+             [ngClass]="image === imageUrl ? 'selected-preview' : ''">
+      </ng-container>
+    </div>
+  </div>
+</section>
