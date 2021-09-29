@@ -64,18 +64,11 @@ export class AllPostsComponent implements OnInit {
     });
   }
 
-  // onClickDetails(postId: string): void {
-  //   // localStorage.setItem('postId', postId);
-  //   // this.router.navigate([]).then(e => {  window.open('/details', '_blank'); });
-  //   this.router.navigate(['/details'], {state: {postId}});
-  // }
-
   onClickLoadMore(): void {
     this.getPosts('pageToken=' + this.nextPageToken + '&');
   }
 
   onClickThumbnail(imageUrl: string, imageArray: string[]): void {
-    console.log(imageArray);
     const dialogConfig = {
       width: '100%',
       height: '100%',

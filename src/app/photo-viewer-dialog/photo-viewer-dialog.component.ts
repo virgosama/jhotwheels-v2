@@ -21,18 +21,12 @@ export class PhotoViewerDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.imagePreview.imageArray = this.data.imageArray;
-    console.log(this.data.imageArray);
     this.onClickPreview(this.data.imageUrl);
   }
 
   onClickPreview(imageUrl: string): void {
     this.imageUrl = imageUrl;
     const photoViewer = document.querySelector('.cdk-global-overlay-wrapper') as HTMLElement;
-    // const photoViewerPreview = document.querySelector('#test') as HTMLElement;
-    // this.test = ((photoViewer.offsetWidth / 2) - 20);
-
-    // photoViewerPreview.style.left = (photoViewer.offsetWidth / 2).toString();
-    // console.log(photoViewerPreview);
   }
 
 }

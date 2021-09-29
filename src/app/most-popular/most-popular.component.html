@@ -1,11 +1,17 @@
 <app-header-menu [transparentMenu]="isHomepage"></app-header-menu>
 
-<section class="under-construction">
-  <div class="under-construction__content">
-    <div class="under-construction__content-box">
-      <span>UNDER CONSTRUCTION</span>
-      <p>I will keep adding more features and improvements to enhance this website.<br />Original website can be found
-        <a style="text-decoration: underline" href="http://www.jhotwheels.com">HERE</a></p>
+<section class="most-popular container">
+  <h1>Most Popular Posts</h1>
+  <div class="most-popular__content">
+    <div class="most-popular__content-item" *ngFor="let post of posts">
+      <div style="width: 100%">
+        <h2 routerLink="../details/{{post.id}}">{{post.title}}</h2>
+      </div>
+      <span class="most-popular__content-date">{{post.publishedDate | date:'fullDate'}}</span>
+      <p class="most-popular__content-text">{{post.description}}</p>
+      <div *ngFor="let imageUrl of post.imageList | slice:0:4;" class="most-popular__content-images">
+        <img (click)="onClickThumbnail(imageUrl, post.imageList)" [src]="imageUrl">
+      </div>
     </div>
   </div>
 </section>

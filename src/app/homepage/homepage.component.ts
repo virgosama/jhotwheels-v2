@@ -54,7 +54,6 @@ export class HomepageComponent implements OnInit {
   }
 
   onClickThumbnail(imageUrl: string, imageArray: string[]): void {
-    console.log(imageArray);
     const dialogConfig = {
       width: '100%',
       height: '100%',
